@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new User</title>
+</head>
+<body>
+<h1>Create new User</h1>
+<form th:method="POST" th:action="@{/admin/new}" th:object="${user}">
+    <table>
+
+        <tr>
+            <td>
+                <label for="userName">Enter userName</label>
+                <input type="text" th:field="*{userName}" id="userName" required/>
+                <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName error</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="password">Enter password</label>
+                <input type="text" th:field="*{password}" id="password" required/>
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</div>
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td>
+                <label for="email">Enter email</label>
+                <input type="text" th:field="*{email}" id="email" required/>
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">password error</div>
+            </td>
+        </tr>
+        <br>
+        <input th:type="checkbox" th:id="2" th:name="ROLE_ADMIN" th:value="ROLE_ADMIN">
+        <label th:for="ADMIN">Admin</label>
+        <input th:type="checkbox" th:id="1" th:name="ROLE_USER" th:value="ROLE_USER">
+        <label th:for="USER">User </label>
+
+        <tr>
+            <td>
+                <input type="submit" class="buttonAdd" value="Create!"/>
+            </td>
+        </tr>
+    </table>
+    <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</form>
+</body>
+</html>
